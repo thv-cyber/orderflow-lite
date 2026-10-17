@@ -1,0 +1,32 @@
+
+# Dependencies
+node_modules/
+node_modules.zip
+server/node_modules/
+
+# Secrets and environment variables
+.env
+.env.*
+!.env.example
+
+# SQLite databases and temporary files
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+*.sqlite-journal
+*.db
+
+# Build output
+dist/
+build/
+
+# Logs
+*.log
+
+# Local QR codes containing development IP addresses
+public/qr/
+public/table-qr-codes.html
+
+# Operating system files
+.DS_Store
+Thumbs.db

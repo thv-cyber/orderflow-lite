@@ -1,0 +1,923 @@
+
+/* BOWLSTATION — COMPACT KITCHEN DASHBOARD */
+
+.kitchen-page,
+.ks-login-page {
+  font-family: inherit;
+  color: #122a52;
+  box-sizing: border-box;
+}
+
+.kitchen-page *,
+.ks-login-page * {
+  box-sizing: border-box;
+}
+
+.kitchen-page {
+  min-height: 100dvh;
+  background: #eaf0f9;
+  padding: 30px clamp(16px, 3vw, 48px) 60px;
+}
+
+.ks-shell {
+  width: min(1560px, 100%);
+  margin: 0 auto;
+}
+
+/* DASHBOARD HEADER */
+
+.ks-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 23px;
+}
+
+.ks-eyebrow,
+.ks-login-topline {
+  margin: 0 0 10px;
+  color: #587ab1;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  font-weight: 850;
+}
+
+.ks-header h1 {
+  margin: 0;
+  color: #152c50;
+  font-size: clamp(28px, 3vw, 42px);
+  line-height: 1.12;
+  font-weight: 850;
+  letter-spacing: -0.045em;
+}
+
+.ks-header h1 span {
+  color: #173c9b;
+}
+
+.ks-header__subtitle {
+  margin: 9px 0 0;
+  color: #6e84a5;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.ks-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.ks-button {
+  min-height: 44px;
+  padding: 10px 15px;
+  border: 1px solid #cadaf0;
+  border-radius: 11px;
+  background: #fff;
+  color: #173c9b;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 0.18s, transform 0.18s;
+}
+
+.ks-button:hover:not(:disabled) {
+  background: #f7faff;
+  transform: translateY(-1px);
+}
+
+.ks-button--danger {
+  color: #a73537;
+}
+
+/* SUMMARY */
+
+.ks-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 27px;
+}
+
+.ks-metric {
+  min-height: 83px;
+  padding: 16px 19px;
+  border: 1px solid #d7e3f4;
+  border-radius: 14px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.ks-metric span {
+  color: #758bab;
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  font-weight: 850;
+}
+
+.ks-metric strong {
+  color: #173c9b;
+  font-size: 33px;
+  line-height: 1;
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ORDER BOARD */
+
+.ks-board-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding-bottom: 12px;
+  margin-bottom: 17px;
+  border-bottom: 1px solid #d1deed;
+}
+
+.ks-board-heading h2 {
+  margin: 0;
+  color: #152c50;
+  font-size: 24px;
+  letter-spacing: -0.035em;
+}
+
+.ks-board-heading h2 span {
+  color: #173c9b;
+}
+
+.ks-board-heading p {
+  margin: 0;
+  color: #7d93b2;
+  font-size: 12px;
+  text-align: right;
+}
+
+.ks-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 19px;
+}
+
+.ks-filter {
+  min-height: 41px;
+  padding: 9px 14px;
+  border: 1px solid #cfdcef;
+  border-radius: 10px;
+  background: #fff;
+  color: #637da5;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.ks-filter:hover {
+  border-color: #173c9b;
+  color: #173c9b;
+}
+
+.ks-filter--active,
+.ks-filter--active:hover {
+  background: #173c9b;
+  color: #fff;
+  border-color: #173c9b;
+}
+
+/* ORDER TICKETS */
+
+.ks-ticket-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 15px;
+}
+
+.ks-ticket {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid #d5e2f4;
+  border-top: 4px solid #f2cb48;
+  border-radius: 15px;
+  background: white;
+  box-shadow: 0 7px 22px rgba(20, 54, 115, 0.035);
+}
+
+.ks-ticket--preparing {
+  border-top-color: #3260c9;
+}
+
+.ks-ticket--ready {
+  border-top-color: #28a773;
+}
+
+.ks-ticket--completed {
+  border-top-color: #bdcadb;
+}
+
+.ks-ticket__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px 19px 14px;
+  border-bottom: 1px solid #e5ecf6;
+}
+
+.ks-ticket__identification {
+  min-width: 0;
+}
+
+.ks-ticket__eyebrow {
+  color: #708bad;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.055em;
+}
+
+.ks-ticket__header h3 {
+  margin: 6px 0 5px;
+  color: #142a4c;
+  font-size: clamp(23px, 2vw, 29px);
+  line-height: 1.15;
+  font-weight: 900;
+  letter-spacing: -0.035em;
+}
+
+.ks-ticket__guest {
+  margin: 0;
+  color: #536c91;
+  font-size: 13px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.ks-ticket__guest strong {
+  color: #173c9b;
+  font-weight: 800;
+}
+
+.ks-ticket__guest span {
+  color: #8397b5;
+  font-weight: 500;
+}
+
+/* STATUS LABELS */
+
+.ks-status {
+  align-self: flex-start;
+  flex-shrink: 0;
+  border-radius: 8px;
+  padding: 9px 11px;
+  font-size: 12px;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.ks-status--pending {
+  background: #fff0be;
+  color: #935f00;
+}
+
+.ks-status--preparing {
+  background: #e5ecff;
+  color: #244bb3;
+}
+
+.ks-status--ready {
+  background: #d7f5e8;
+  color: #14714d;
+}
+
+.ks-status--completed {
+  background: #edf0f5;
+  color: #627289;
+}
+
+/* FOOD ITEMS — MAIN FOCUS */
+
+.ks-ticket__items {
+  flex: 1;
+  padding: 17px 19px 19px;
+}
+
+.ks-ticket__items-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 12px;
+  color: #7b8dab;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.075em;
+}
+
+.ks-ticket__items-heading strong {
+  color: #173c9b;
+  font-size: 11px;
+}
+
+.ks-ticket__item-list {
+  display: grid;
+  gap: 10px;
+}
+
+.ks-ticket__item {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  min-width: 0;
+}
+
+.ks-quantity {
+  flex: 0 0 auto;
+  min-width: 55px;
+  min-height: 52px;
+  display: grid;
+  place-items: center;
+  padding: 8px;
+  border-radius: 11px;
+  background: #e9effb;
+  color: #173c9b;
+  font-size: 22px;
+  line-height: 1;
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+}
+
+.ks-ticket__itemname {
+  min-width: 0;
+  color: #152c50;
+  font-size: clamp(16px, 1.45vw, 19px);
+  line-height: 1.3;
+  font-weight: 850;
+  overflow-wrap: anywhere;
+}
+
+.ks-ticket__no-items {
+  margin: 0;
+  color: #8b5460;
+  font-size: 13px;
+}
+
+/* KITCHEN NOTES */
+
+.ks-kitchen-notes {
+  margin-top: 15px;
+  padding: 13px 14px;
+  border: 1px solid #f2d08b;
+  border-left: 5px solid #e6a422;
+  border-radius: 10px;
+  background: #fff7e2;
+}
+
+.ks-kitchen-notes strong {
+  color: #8e5200;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  font-weight: 900;
+}
+
+.ks-kitchen-notes p {
+  margin: 6px 0 0;
+  color: #5c3b16;
+  font-size: 15px;
+  font-weight: 750;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+/* COMPACT TIMERS */
+
+.ks-timers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-top: 1px solid #e5ecf6;
+  border-bottom: 1px solid #e5ecf6;
+  background: #f7faff;
+}
+
+.ks-timer {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 3px 6px;
+  padding: 12px 16px;
+}
+
+.ks-timer + .ks-timer {
+  border-left: 1px solid #dce6f5;
+}
+
+.ks-timer__label {
+  grid-column: 1 / -1;
+  color: #6d83a3;
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: 0.035em;
+}
+
+.ks-timer__value {
+  color: #173c9b;
+  font-size: clamp(19px, 2vw, 24px);
+  line-height: 1;
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+}
+
+.ks-timer__health,
+.ks-timer__caption {
+  justify-self: end;
+  color: #7487a2;
+  font-size: 10px;
+  font-weight: 800;
+  text-align: right;
+}
+
+.ks-timer__health--on-track {
+  color: #15784a;
+}
+
+.ks-timer__health--attention {
+  color: #996308;
+}
+
+.ks-timer__health--priority {
+  color: #b92e2e;
+}
+
+.ks-timer__health--neutral {
+  color: #7587a0;
+}
+
+/* ORDER ACTIONS */
+
+.ks-ticket__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 13px 19px;
+  background: #fff;
+}
+
+.ks-ticket__subtotal {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ks-ticket__subtotal span {
+  color: #8195b1;
+  font-size: 10px;
+  font-weight: 900;
+}
+
+.ks-ticket__subtotal strong {
+  color: #173c9b;
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.ks-advance {
+  min-height: 47px;
+  padding: 12px 17px;
+  border: 0;
+  border-radius: 10px;
+  background: #ffdd48;
+  color: #173c9b;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 900;
+  cursor: pointer;
+  transition: background 0.18s, transform 0.18s;
+}
+
+.ks-advance:hover:not(:disabled) {
+  background: #ffd027;
+  transform: translateY(-1px);
+}
+
+.ks-advance--secondary {
+  background: #e1eaff;
+}
+
+.ks-ticket__completed {
+  color: #14714d;
+  font-size: 13px;
+  font-weight: 850;
+}
+
+/* MESSAGES */
+
+.ks-board-error {
+  margin-bottom: 17px;
+  padding: 13px 16px;
+  border: 1px solid #f5bea0;
+  border-radius: 10px;
+  background: #fff5ee;
+  color: #9e4419;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.ks-empty-state {
+  padding: 55px 22px;
+  border: 1px solid #d6e3f4;
+  border-radius: 16px;
+  background: white;
+  text-align: center;
+}
+
+.ks-empty-state > span {
+  width: 50px;
+  height: 50px;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 15px;
+  border-radius: 15px;
+  background: #eaf2ff;
+  color: #173c9b;
+  font-size: 27px;
+  font-weight: 900;
+}
+
+.ks-empty-state h3 {
+  margin: 0 0 8px;
+  font-size: 20px;
+}
+
+.ks-empty-state p {
+  margin: 0;
+  color: #7388a6;
+  font-size: 13px;
+}
+
+.ks-footer {
+  margin-top: 24px;
+  color: #788cab;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.ks-footer strong {
+  color: #3d5986;
+}
+
+/* STAFF LOGIN */
+
+.ks-login-page {
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background:
+    radial-gradient(circle at top left, #fff9d6, transparent 32%),
+    linear-gradient(135deg, #eef4ff, #e4edf9);
+}
+
+.ks-login-card {
+  width: min(460px, 100%);
+  padding: clamp(28px, 5vw, 43px);
+  border: 1px solid #d8e4f4;
+  border-radius: 24px;
+  background: #fff;
+  box-shadow: 0 20px 60px rgba(20, 55, 125, 0.1);
+}
+
+.ks-login-topline {
+  margin-bottom: 23px;
+}
+
+.ks-login-logo {
+  width: 61px;
+  height: 61px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 24px;
+  border-radius: 18px;
+  background: #ffdd48;
+  color: #173c9b;
+  font-size: 32px;
+  font-weight: 950;
+}
+
+.ks-login-card h1 {
+  margin: 0 0 10px;
+  color: #173c9b;
+  font-size: clamp(27px, 5vw, 36px);
+  letter-spacing: -0.045em;
+}
+
+.ks-login-card > p {
+  margin: 0 0 28px;
+  color: #6f83a0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.ks-login-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ks-login-card label {
+  color: #294265;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.ks-login-card input {
+  min-height: 52px;
+  padding: 13px 15px;
+  border: 1px solid #d1def0;
+  border-radius: 12px;
+  background: #f9fbff;
+  color: #152c50;
+  font: inherit;
+  font-size: 14px;
+}
+
+.ks-login-card form button {
+  min-height: 50px;
+  margin-top: 5px;
+  border: 0;
+  border-radius: 12px;
+  background: #173c9b;
+  color: white;
+  font: inherit;
+  font-weight: 850;
+  cursor: pointer;
+}
+
+.ks-login-card > small {
+  display: block;
+  margin-top: 23px;
+  color: #869ab5;
+  font-size: 11px;
+  text-align: center;
+}
+
+.ks-login-error {
+  margin: 0;
+  padding: 11px 12px;
+  border: 1px solid #f0c1bd;
+  border-radius: 9px;
+  background: #fff3f2;
+  color: #a63232;
+  font-size: 12px;
+}
+
+.ks-login-card--loading {
+  text-align: center;
+}
+
+.ks-login-card--loading .ks-login-logo {
+  margin: 0 auto 20px;
+}
+
+/* ACCESSIBILITY */
+
+.kitchen-page button:focus-visible,
+.ks-login-page button:focus-visible,
+.ks-login-page input:focus-visible {
+  outline: 3px solid #e6b92b;
+  outline-offset: 3px;
+}
+
+.kitchen-page button:disabled,
+.ks-login-page button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* LARGE DESKTOP */
+
+@media (min-width: 1640px) {
+  .ks-ticket-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* SMALL DESKTOP / TABLET */
+
+@media (max-width: 900px) {
+  .ks-ticket-grid {
+    gap: 12px;
+  }
+
+  .ks-ticket__header {
+    padding: 15px;
+  }
+
+  .ks-ticket__items {
+    padding: 15px;
+  }
+
+  .ks-ticket__footer {
+    padding: 13px 15px;
+  }
+
+  .ks-timer {
+    padding: 10px 12px;
+  }
+
+  .ks-timer__health,
+  .ks-timer__caption {
+    font-size: 9px;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 760px) {
+  .kitchen-page {
+    padding: 22px 14px 42px;
+  }
+
+  .ks-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .ks-header__actions {
+    width: 100%;
+  }
+
+  .ks-header__actions .ks-button {
+    flex: 1;
+  }
+
+  .ks-metrics {
+    gap: 8px;
+    margin-bottom: 23px;
+  }
+
+  .ks-metric {
+    min-height: 73px;
+    padding: 12px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+  }
+
+  .ks-metric span {
+    font-size: 9px;
+  }
+
+  .ks-metric strong {
+    font-size: 29px;
+  }
+
+  .ks-board-heading {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .ks-board-heading p {
+    text-align: left;
+  }
+
+  .ks-filters {
+    gap: 7px;
+  }
+
+  .ks-filter {
+    min-height: 40px;
+    padding: 9px 11px;
+  }
+
+  .ks-ticket-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ks-ticket__itemname {
+    font-size: 17px;
+  }
+}
+
+/* SMALL MOBILE PHONES */
+
+@media (max-width: 390px) {
+  .ks-ticket__header h3 {
+    font-size: 23px;
+  }
+
+  .ks-ticket__guest {
+    font-size: 12px;
+  }
+
+  .ks-status {
+    padding: 8px;
+    font-size: 11px;
+  }
+
+  .ks-timer {
+    grid-template-columns: 1fr;
+  }
+
+  .ks-timer__label {
+    grid-column: auto;
+  }
+
+  .ks-timer__health,
+  .ks-timer__caption {
+    justify-self: start;
+    text-align: left;
+  }
+
+  .ks-advance {
+    padding: 10px;
+    font-size: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ks-button,
+  .ks-advance {
+    transition: none;
+  }
+}
+
+
+
+/* ===========================================
+   BOWLSTATION — KITCHEN TIMER ALERTS
+   =========================================== */
+
+/* Normal: under 5 minutes */
+.ks-timer--primary:has(.ks-timer__health--on-track) {
+  border-left: 4px solid #22a06b;
+}
+
+/* Attention: 5–10 minutes */
+.ks-timer--primary:has(.ks-timer__health--attention) {
+  border-left: 4px solid #f59e0b;
+  background: #fff5df;
+  animation: kitchen-attention-pulse 1s ease-in-out infinite;
+}
+
+.ks-timer--primary:has(.ks-timer__health--attention)
+.ks-timer__value {
+  color: #b66c00;
+}
+
+.ks-timer--primary:has(.ks-timer__health--attention)
+.ks-timer__health {
+  color: #a36300;
+}
+
+/* Priority: 10+ minutes, solid red */
+.ks-timer--primary:has(.ks-timer__health--priority) {
+  border-left: 4px solid #dc2626;
+  background: #fee2e2;
+  animation: none;
+}
+
+.ks-timer--primary:has(.ks-timer__health--priority)
+.ks-timer__value {
+  color: #b91c1c;
+}
+
+.ks-timer--primary:has(.ks-timer__health--priority)
+.ks-timer__health {
+  color: #b91c1c;
+}
+
+/* Subtle orange pulse once per second */
+@keyframes kitchen-attention-pulse {
+  0%, 100% {
+    background-color: #fff5df;
+    border-left-color: #f59e0b;
+  }
+
+  50% {
+    background-color: #ffdf9a;
+    border-left-color: #d97706;
+  }
+}
+
+/* Respect reduced-motion accessibility settings */
+@media (prefers-reduced-motion: reduce) {
+  .ks-timer--primary:has(.ks-timer__health--attention) {
+    animation: none;
+    background: #fff0c4;
+  }
+}
