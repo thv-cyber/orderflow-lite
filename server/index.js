@@ -126,13 +126,18 @@ function cookieOptions() {
 
 
 
-// Database setup
+ // Database setup
+ // Use a persistent disk in production, local SQLite during development.
+const databasePath =
+  process.env.DATABASE_PATH ||
+  path.join(__dirname, "orderflow.sqlite");
 
-const db = new Database(
+fs.mkdirSync(path.dirname(databasePath), {
+  recursive: true,
+});
 
-  path.join(__dirname, "orderflow.sqlite")
+const db = new Database(databasePath);
 
-);
 
 
 
