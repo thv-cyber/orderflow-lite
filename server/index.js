@@ -1129,9 +1129,20 @@ const createOrder = db.transaction(
 
 
 
-// Public: customers can submit orders (and receive a private tracking token).
 
-app.post("/api/orders", (req, res) => {
+const orderLimiter = rateLimit({
+  windowMs: 60 * 1000,
+  limit: 5,
+  standardHeaders: "draft-7",
+  legacyHeaders: false,
+  message: {
+    error: "Too many demo orders. Please wait a minute.",
+  },
+});
+
+// Public: customers can submit orders (and receive a private tracking token).
+app.post("/api/orders", orderLimiter, (req, res) => {
+
 
   const {
 
