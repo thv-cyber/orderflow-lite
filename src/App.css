@@ -1191,3 +1191,26 @@ html body .kiosk .dish-information .dish-view-photo-cta {
   display: none !important;
 }
 
+/* BOWLSTATION — Desktop checkout scrolling fix */
+@media (min-width: 951px) {
+  .cart-panel {
+    height: 100dvh;
+    max-height: 100dvh;
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  .cart-item-list {
+    flex: 0 1 auto;
+    min-height: 0;
+    max-height: 200px;
+    overflow-y: auto;
+  }
+
+  .submit-order {
+    position: sticky;
+    bottom: 0;
+    z-index: 5;
+  }
+}
